@@ -7,31 +7,49 @@ import java.sql.ResultSet;
 public class DB {
     
     public DB() {
-        testen();
+        
+        
 
     }
-
-    public static void testen() {
+    
+    public ResultSet getTupleFromDatabase(String table, int ID) {
+        ResultSet ergebnis = null;
+        try{
+            ergebnis = connect().executeQuery("SELECT * FROM " + table + " WHERE ID = " + ID);
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return ergebnis;
+    }
+    
+    public void countTuples(String table) {
+        ResultSet numberOfTuplesSet = null;
+        int numberOfTuples = 0;
+        try{
+            numberOfTuplesSet = connect().executeQuery("SELECT COUNT(ID) FROM " + table);
+            //numberOfTuples = numberOfTuplesSet.getInt("COUNT(ID)");
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(numberOfTuplesSet);
+    }
+    
+    public Statement connect() {
+        
         Connection verbindung = null;
+        Statement anfrage = null;
+        
         try {
             // Datenbankverbindung herstellen
             verbindung = DriverManager.getConnection("jdbc:sqlite:db/database.db");
-            System.out.println("Test");
             // Objekt erzeugen, das die Abwicklung von Anfragen uebernimmt
-            Statement anfrage = verbindung.createStatement();
+            anfrage = verbindung.createStatement();
 
-            //executeQuery gibt die Ergebnistabelle als ResultSet-Objekt zurueck (Alternative z. B.: executeUpdate, gibt Anzahl der modifizierten Zeilen oder 0 bei keinem Ergebnis zurueck)
-            ResultSet ergebnis = anfrage.executeQuery("SELECT * FROM Diagramme;");
-
-            //Ergebnistabelle ausdrucken (anstatt der Spaltenbezeichner koennten auch ganzzahlige Spaltennummern - erste Nummer: 1 - angegeben werden)
-            //(Entsprechend den SQL-Typen der einzelnen Spaltenwerte koennen hier verschiedene Methoden zum Einlesen als passender Java-Typ verwendet werden.)
-            while (ergebnis.next()) {
-                System.out.println(ergebnis.getString("Land") + ", " + ergebnis.getString("Name") + ", " + ergebnis.getString("Länge"));
-            }
-
-        } catch (SQLException e) {
+        }catch (SQLException e) {
+            
             System.out.println(e.getMessage());
-        } finally {
+            
+        }finally {
             try {
                 if (verbindung != null) {
                     verbindung.close();
@@ -40,6 +58,9 @@ public class DB {
                 System.out.println(ex.getMessage());
             }
         }
+        
+        return anfrage;
+        
     }
-
+    
 }
