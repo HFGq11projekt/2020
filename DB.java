@@ -3,13 +3,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.util.Random;
 
 public class DB {
 
     Connection verbindung;
     Statement anfrage;
-
+    
     public DB() {
         verbindung = null;
         anfrage = null;
@@ -52,23 +51,39 @@ public class DB {
         return numberOfTuples;
     }
 
-    public Solution getSolution(){
-
-        Random rand = new Random();
+    public Solution getSolution(int id){
         Solution solution = null;
 
         try{
-            ResultSet solutionSet = anfrage.executeQuery("SELECT * FROM Diagramme WHERE ID = " + rand.nextInt(countTuples("Diagramme")+1));
+            ResultSet solutionSet = anfrage.executeQuery("SELECT * FROM Diagramme WHERE ID = " + id);
+            int key = solutionSet.getInt("ID");
             String name = solutionSet.getString("Name");
             String land = solutionSet.getString("Land");
             int breite = solutionSet.getInt("Breite");
             int laenge = solutionSet.getInt("Länge");
             String pfad = solutionSet.getString("Diagramm");
-            solution = new Solution(name, land, breite, laenge, pfad);
+            solution = new Solution(key, name, land, breite, laenge, pfad);
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
         return solution;
     }
 
+    public FalseAnswer getFalse(int id){
+        FalseAnswer falseAnswer = null;
+        
+        try{
+            ResultSet falseSet = anfrage.executeQuery("SELECT ID,Name,Land,Breite,Länge FROM Diagramme WHERE ID = " + id);
+            int key = falseSet.getInt("ID");
+            String name = falseSet.getString("Name");
+            String land = falseSet.getString("Land");
+            int breite = falseSet.getInt("Breite");
+            int laenge = falseSet.getInt("Länge");
+            falseAnswer = new FalseAnswer(key, name, land, breite, laenge);
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return falseAnswer;
+    }
+    
 }

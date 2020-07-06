@@ -21,11 +21,17 @@ public class Layout extends Application
   private Button Knopf4;
   @FXML
   private ImageView Diagramm;
+  
+  DB db;
+  Controller control;
    
     public void start(Stage stage) throws Exception
     {
         FXMLLoader loader =  new  FXMLLoader(getClass().getResource("Layout.fxml"));
-       
+        
+        db = new DB();
+        control = new Controller(db);
+        
         Pane layout = loader.load();
         Scene scene =  new  Scene(layout);
         stage.setScene(scene);
