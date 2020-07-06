@@ -5,11 +5,14 @@ import java.util.Random;
 public class Controller {
     
     //Bereits aus der Datenbank ausgelesene Städte als Antwortmöglichkeiten
-    int[] usedOptions = new int[4];
+    ArrayList<Integer> usedOptions = new ArrayList<>();
     //Bereits aus der Datenbank ausgelesene Klimadiagramme
     ArrayList<Integer> usedDiagrams = new ArrayList<>();
     
     DB db;
+    
+            
+    Random rand = new Random();
     
     public Controller(DB db){
         this.db = db;
@@ -19,8 +22,7 @@ public class Controller {
     //Diese darf im Spiel nur einmal vorkommen
     
     public Solution getUnusedQuizContent() {
-        
-        Random rand = new Random();
+
         int randInt = rand.nextInt(db.countTuples("Diagramme"));
         
         while(usedDiagrams.contains(randInt)){
@@ -28,14 +30,25 @@ public class Controller {
         }
         
         usedDiagrams.add(randInt);
-        usedOptions[0] = randInt;
+        usedOptions.add(randInt);
         return db.getSolution(randInt); 
     }
     
-    public FalseAnswer[] getFalseAnswers(int idOfTrueAnswer) {
+    public FalseAnswer[] getFalseAnswers() {
+        
+       FalseAnswer[] fA = new FalseAnswer[3];
+       
        for(int i=0; i<3; i++){
-           
+            int randInt = rand.nextInt(db.countTuples("Diagramme"));
+            
+            while(usedOptions.contains(randInt)){
+                randInt = rand.nextInt(db.countTuples("Diagramme"));
+            }
+            
+            usedOptions.add(randInt);
+            fA[i] = db.getFalse(randInt);
+            
        }
-       return null;
+       return fA;
     }
 }
