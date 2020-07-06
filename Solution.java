@@ -1,18 +1,18 @@
 
 public class Solution
 {
-    String name;
-    String land;
-    int breite;
-    int laenge;
-    String path;
+    public String name;
+    public String land;
+    public int breite;
+    public int laenge;
+    public String pfad;
     
-    public Solution(String name, String land, int breite, int laenge, String path) {
+    public Solution(String name, String land, int breite, int laenge, String pfad) {
         this.land = land;
         this.name = name;
         this.breite = breite;
         this.laenge = laenge;
-        this.path = path;
+        this.pfad = pfad;
     }
 
 }
