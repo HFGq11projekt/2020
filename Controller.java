@@ -10,8 +10,7 @@ public class Controller {
     ArrayList<Integer> usedDiagrams = new ArrayList<>();
     
     DB db;
-    
-            
+           
     Random rand = new Random();
     
     public Controller(DB db){
@@ -21,12 +20,12 @@ public class Controller {
     //Holt das Diagramm und die dazugehörige Stadt aus der Datenbank
     //Diese darf im Spiel nur einmal vorkommen
     
-    public Solution getUnusedQuizContent() {
+    public Solution getUnusedSolution() {
 
-        int randInt = rand.nextInt(db.countTuples("Diagramme"));
+        int randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
         
         while(usedDiagrams.contains(randInt)){
-           randInt = rand.nextInt(db.countTuples("Diagramme"));
+           randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
         }
         
         usedDiagrams.add(randInt);
@@ -39,10 +38,11 @@ public class Controller {
        FalseAnswer[] fA = new FalseAnswer[3];
        
        for(int i=0; i<3; i++){
-            int randInt = rand.nextInt(db.countTuples("Diagramme"));
-            
+            int randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
+
             while(usedOptions.contains(randInt)){
-                randInt = rand.nextInt(db.countTuples("Diagramme"));
+                randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
+                System.out.println(randInt + "ii");
             }
             
             usedOptions.add(randInt);
@@ -51,4 +51,12 @@ public class Controller {
        }
        return fA;
     }
+    
+    public void newRound() {
+        usedOptions.clear();
+    }
+    
+    
+    
+    
 }

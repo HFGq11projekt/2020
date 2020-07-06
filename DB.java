@@ -53,7 +53,7 @@ public class DB {
 
     public Solution getSolution(int id){
         Solution solution = null;
-
+        
         try{
             ResultSet solutionSet = anfrage.executeQuery("SELECT * FROM Diagramme WHERE ID = " + id);
             int key = solutionSet.getInt("ID");
@@ -71,7 +71,7 @@ public class DB {
 
     public FalseAnswer getFalse(int id){
         FalseAnswer falseAnswer = null;
-        
+
         try{
             ResultSet falseSet = anfrage.executeQuery("SELECT ID,Name,Land,Breite,Länge FROM Diagramme WHERE ID = " + id);
             int key = falseSet.getInt("ID");
