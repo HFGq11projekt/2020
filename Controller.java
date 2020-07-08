@@ -33,10 +33,10 @@ public class Controller {
         }
        
        fA[0] = db.getAnswer(randInt);
-       currentSolution = 0;
+       currentSolution = randInt;
        usedDiagrams.add(randInt);
         
-       for(int i=0; i<3; i++){
+       for(int i=1; i<4; i++){
             
 
             while(usedOptions.contains(randInt)){
