@@ -39,7 +39,7 @@ public class Controller {
        for(int i=1; i<4; i++){
             
 
-            while(usedOptions.contains(randInt)){
+            while(usedOptions.contains(randInt) || currentSolution == randInt){
                 randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
             }
             
