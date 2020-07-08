@@ -4,13 +4,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="Knopf1" layoutX="92.0" layoutY="220.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="155.0" text="Button" />
-      <Button fx:id="Knopf2" layoutX="351.0" layoutY="220.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="155.0" text="Button" />
-      <Button fx:id="Knopf3" layoutX="92.0" layoutY="311.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="155.0" text="Button" />
-      <Button fx:id="Knopf4" layoutX="351.0" layoutY="311.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="155.0" text="Button" />
-      <ImageView fx:id="Diagramm" fitHeight="150.0" fitWidth="414.0" layoutX="92.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="Knopf1" layoutX="161.0" layoutY="429.0" mnemonicParsing="false" onAction="#Knopf1Gedrueckt" prefHeight="66.0" prefWidth="250.0" text="Button" />
+      <Button fx:id="Knopf2" layoutX="420.0" layoutY="429.0" mnemonicParsing="false" onAction="#Knopf2Gedrueckt" prefHeight="66.0" prefWidth="250.0" text="Button" />
+      <Button fx:id="Knopf3" layoutX="161.0" layoutY="520.0" mnemonicParsing="false" onAction="#Knopf3Gedrueckt" prefHeight="66.0" prefWidth="250.0" text="Button" />
+      <Button fx:id="Knopf4" layoutX="420.0" layoutY="520.0" mnemonicParsing="false" onAction="#Knopf4Gedrueckt" prefHeight="66.0" prefWidth="250.0" text="Button" />
+      <ImageView fx:id="Diagramm" fitHeight="390.0" fitWidth="640.0" layoutX="80.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
