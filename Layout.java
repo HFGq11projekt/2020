@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
 
 
-public class Layout
+public class Layout extends Application
 {
   @FXML
   private Button Knopf1;
