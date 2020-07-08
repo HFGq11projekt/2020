@@ -21,6 +21,7 @@ public class Layout extends Application
   private Button Knopf4;
   @FXML
   private ImageView Diagramm;
+  private Answer[] answers = new Answer[4];
   
   DB db;
   Controller control;
@@ -46,27 +47,33 @@ public class Layout extends Application
   }
   public void setAnswers()
   {
-   var answers = control.getAnswers();  
-   Knopf1.setText(answers[0].name + "," + answers[0].land);
-   Knopf2.setText(answers[1].name + "," + answers[1].land);
-   Knopf3.setText(answers[2].name + "," + answers[2].land); 
-   Knopf4.setText(answers[3].name + "," + answers[3].land); 
+   answers = control.getAnswers();  
+   Knopf1.setText(answers[0].name + " , " + answers[0].land);
+   Knopf2.setText(answers[1].name + " , " + answers[1].land);
+   Knopf3.setText(answers[2].name + " , " + answers[2].land); 
+   Knopf4.setText(answers[3].name + " , " + answers[3].land); 
   }
   public void Knopf1Gedrueckt()
   {
       
+   
+   if(control.checkAnswer(answers[0].id))
+   {
+     Knopf1.setStyle("-fx-background-color: #00ff00; ");  
+    }
+  
   }
   public void Knopf2Gedrueckt()
   {
-      
+   control.checkAnswer(answers[1].id);   
   }
   public void Knopf3Gedrueckt()
   {
-      
+   control.checkAnswer(answers[2].id);   
   }
   public void Knopf4Gedrueckt()
   {
-      
+   control.checkAnswer(answers[3].id);   
   }
  
 
