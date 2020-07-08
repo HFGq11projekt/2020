@@ -13,6 +13,8 @@ public class Controller {
            
     Random rand = new Random();
     
+    int currentSolution = 0;
+    
     public Controller(DB db){
         this.db = db;
     }
@@ -20,33 +22,32 @@ public class Controller {
     //Holt das Diagramm und die dazugehörige Stadt aus der Datenbank
     //Diese darf im Spiel nur einmal vorkommen
     
-    public Solution getUnusedSolution() {
-
-        int randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
-        
-        while(usedDiagrams.contains(randInt)){
-           randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
-        }
-        
-        usedDiagrams.add(randInt);
-        usedOptions.add(randInt);
-        return db.getSolution(randInt); 
+    public String getPathOfSolution() {
+        return db.getAnswer(currentSolution).pfad;
     }
     
-    public FalseAnswer[] getFalseAnswers() {
+    public Answer[] getAnswers() {
         
-       FalseAnswer[] fA = new FalseAnswer[3];
+       Answer[] fA = new Answer[4];
+       int randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
        
+       while(usedDiagrams.contains(randInt)){
+           randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
+        }
+       
+       fA[0] = db.getAnswer(randInt);
+       currentSolution = 0;
+       usedDiagrams.add(randInt);
+        
        for(int i=0; i<3; i++){
-            int randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
+            
 
             while(usedOptions.contains(randInt)){
                 randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
-                System.out.println(randInt + "ii");
             }
             
             usedOptions.add(randInt);
-            fA[i] = db.getFalse(randInt);
+            fA[i] = db.getAnswer(randInt);
             
        }
        return fA;
@@ -54,6 +55,7 @@ public class Controller {
     
     public void newRound() {
         usedOptions.clear();
+        currentSolution = 0;
     }
     
     

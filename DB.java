@@ -51,7 +51,7 @@ public class DB {
         return numberOfTuples;
     }
 
-    public Solution getSolution(int id){
+    /*public Solution getSolution(int id){
         Solution solution = null;
         
         try{
@@ -67,23 +67,24 @@ public class DB {
             System.out.println(e.getMessage());
         }
         return solution;
-    }
+    }*/
 
-    public FalseAnswer getFalse(int id){
-        FalseAnswer falseAnswer = null;
+    public Answer getAnswer(int id){
+        Answer answer = null;
 
         try{
-            ResultSet falseSet = anfrage.executeQuery("SELECT ID,Name,Land,Breite,Länge FROM Diagramme WHERE ID = " + id);
-            int key = falseSet.getInt("ID");
-            String name = falseSet.getString("Name");
-            String land = falseSet.getString("Land");
-            int breite = falseSet.getInt("Breite");
-            int laenge = falseSet.getInt("Länge");
-            falseAnswer = new FalseAnswer(key, name, land, breite, laenge);
+            ResultSet answerSet = anfrage.executeQuery("SELECT * FROM Diagramme WHERE ID = " + id);
+            int key = answerSet.getInt("ID");
+            String name = answerSet.getString("Name");
+            String land = answerSet.getString("Land");
+            int breite = answerSet.getInt("Breite");
+            int laenge = answerSet.getInt("Länge");
+            String pfad = answerSet.getString("Diagramm");
+            answer = new Answer(key, name, land, breite, laenge, pfad);
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
-        return falseAnswer;
+        return answer;
     }
     
 }
