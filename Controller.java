@@ -18,9 +18,6 @@ public class Controller {
     public Controller(DB db){
         this.db = db;
     }
-
-    //Holt das Diagramm und die dazugehörige Stadt aus der Datenbank
-    //Diese darf im Spiel nur einmal vorkommen
     
     public String getPathOfSolution() {
         return db.getAnswer(currentSolution).pfad;
@@ -51,6 +48,16 @@ public class Controller {
             
        }
        return fA;
+    }
+    
+    public boolean checkAnswer(int id) {
+        
+        if(id == currentSolution){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
     
     public void newRound() {
