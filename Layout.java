@@ -57,23 +57,64 @@ public class Layout extends Application
   {
       
    
-   if(control.checkAnswer(answers[0].id))
+   if(control.checkAnswer(answers[0].id) == true)
    {
-     Knopf1.setStyle("-fx-background-color: #00ff00; ");  
+     Knopf1.setStyle("-fx-background-color: #00ff00; ");
+     control.newRound();
+     setAnswers();
+     setImage();
+     
+    }
+   else
+   {
+    Knopf1.setStyle( "-fx-background.color: #ff0000; ");
     }
   
   }
   public void Knopf2Gedrueckt()
   {
-   control.checkAnswer(answers[1].id);   
+   if(control.checkAnswer(answers[1].id) == true)
+   {
+     Knopf2.setStyle("-fx-background-color: #00ff00; ");
+     control.newRound();
+     setAnswers();
+     setImage();
+     
+    }
+   else
+   {
+    Knopf2.setStyle( "-fx-background.color: #ff0000; ");
+    }  
   }
   public void Knopf3Gedrueckt()
   {
-   control.checkAnswer(answers[2].id);   
+   if(control.checkAnswer(answers[2].id) == true)
+   {
+     Knopf3.setStyle("-fx-background-color: #00ff00; ");
+     control.newRound();
+     setAnswers();
+     setImage();
+     
+    }
+   else
+   {
+    Knopf3.setStyle( "-fx-background.color: #ff0000; ");
+    }   
   }
   public void Knopf4Gedrueckt()
   {
-   control.checkAnswer(answers[3].id);   
+   if(control.checkAnswer(answers[3].id) == true)
+   {
+     Knopf4.setStyle("-fx-background-color: #00ff00; ");
+     control.newRound();
+     setAnswers();
+     setImage();
+     
+    }
+   else
+   {
+    Knopf4.setStyle( "-fx-background.color: #ff0000; ");
+    } 
   }
  
 
