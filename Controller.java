@@ -72,6 +72,7 @@ public class Controller {
             while(usedInts.contains(randInt)){   
                 randInt = rand.nextInt(3)+1;
             }
+            usedInts.add(randInt);
             newArray[randInt] = array[i];
         }
         
