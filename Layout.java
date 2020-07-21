@@ -36,6 +36,8 @@ public class Layout extends Application
         
         Pane layout = loader.load();
         Scene scene =  new  Scene(layout);
+        setAnswers();
+        setImage();
         stage.setScene(scene);
         stage.show();
     }
@@ -63,6 +65,7 @@ public class Layout extends Application
      control.newRound();
      setAnswers();
      setImage();
+     Knopf1.setStyle(null);
      
     }
    else
@@ -79,6 +82,7 @@ public class Layout extends Application
      control.newRound();
      setAnswers();
      setImage();
+     Knopf2.setStyle(null);
      
     }
    else
@@ -94,7 +98,7 @@ public class Layout extends Application
      control.newRound();
      setAnswers();
      setImage();
-     
+     Knopf3.setStyle(null);
     }
    else
    {
@@ -109,7 +113,7 @@ public class Layout extends Application
      control.newRound();
      setAnswers();
      setImage();
-     
+     Knopf4.setStyle(null);
     }
    else
    {
