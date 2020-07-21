@@ -38,7 +38,6 @@ public class Controller {
         
        for(int i=1; i<4; i++){
             
-
             while(usedOptions.contains(randInt) || currentSolution == randInt){
                 randInt = rand.nextInt(db.countTuples("Diagramme"))+1;
             }
@@ -47,7 +46,7 @@ public class Controller {
             fA[i] = db.getAnswer(randInt);
             
        }
-       return fA;
+       return mixAnswers(fA);
     }
     
     public boolean checkAnswer(int id) {
@@ -58,6 +57,25 @@ public class Controller {
             return false;
         }
         
+    }
+    
+    public Answer[] mixAnswers(Answer[] array) {
+        Answer[] newArray = new Answer[4];
+        ArrayList<Integer> usedInts = new ArrayList<>();
+        
+        int randInt = rand.nextInt(3)+1;
+        newArray[0] = array[randInt];
+        usedInts.add(randInt);
+        
+        for(int i=0;i<3;i++){
+            randInt = rand.nextInt(3)+1;
+            while(usedInts.contains(randInt)){   
+                randInt = rand.nextInt(3)+1;
+            }
+            newArray[randInt] = array[i];
+        }
+        
+        return newArray;
     }
     
     public void newRound() {
