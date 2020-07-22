@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
+import javafx.application.Platform;
 
 public class Layout extends Application
 {
@@ -62,6 +63,7 @@ public class Layout extends Application
         if(control.checkAnswer(answers[0].id) == true)
         {
             Knopf1.setStyle("-fx-background-color: #00ff00");
+            
             Reset();
         }
         else
@@ -76,6 +78,7 @@ public class Layout extends Application
         if(control.checkAnswer(answers[1].id) == true)
         {
             Knopf2.setStyle("-fx-background-color: #00ff00");
+            
             Reset();
 
         }
@@ -90,6 +93,7 @@ public class Layout extends Application
         if(control.checkAnswer(answers[2].id) == true)
         {
             Knopf3.setStyle("-fx-background-color: #00ff00");
+            
             Reset();
             
         }
@@ -104,6 +108,7 @@ public class Layout extends Application
         if(control.checkAnswer(answers[3].id) == true)
         {
             Knopf4.setStyle("-fx-background-color: #00ff00");
+            
             Reset();
             
         }
@@ -115,12 +120,12 @@ public class Layout extends Application
 
     public void Reset()
     {
-        new Thread() {
+        Platform.runLater(new Thread() {
             public void run()
             {
                 try
                 {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
 
                 }
                 catch(Exception e)
@@ -129,19 +134,21 @@ public class Layout extends Application
                 }
                 resetAll();
             }
-        }.start();
+        });
 
     }
 
     public void resetAll()
     {
+        
+        control.newRound();
+        setAnswers();
+        setImage();
+        
         Knopf1.setStyle(null);
         Knopf2.setStyle(null);
         Knopf3.setStyle(null);
         Knopf4.setStyle(null);
-        System.out.print("Test");
-        control.newRound();
-        setAnswers();
-        setImage();
+      
     }
 }
