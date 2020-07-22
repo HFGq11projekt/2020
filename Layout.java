@@ -63,6 +63,7 @@ public class Layout extends Application
    {
      Knopf1.setStyle("-fx-background-color: #00ff00; ");
      control.newRound();
+     pause();
      setAnswers();
      setImage();
      Knopf1.setStyle(null);
@@ -80,6 +81,7 @@ public class Layout extends Application
    {
      Knopf2.setStyle("-fx-background-color: #00ff00; ");
      control.newRound();
+     pause();
      setAnswers();
      setImage();
      Knopf2.setStyle(null);
@@ -96,6 +98,7 @@ public class Layout extends Application
    {
      Knopf3.setStyle("-fx-background-color: #00ff00; ");
      control.newRound();
+     pause();
      setAnswers();
      setImage();
      Knopf3.setStyle(null);
@@ -111,6 +114,7 @@ public class Layout extends Application
    {
      Knopf4.setStyle("-fx-background-color: #00ff00; ");
      control.newRound();
+     pause();
      setAnswers();
      setImage();
      Knopf4.setStyle(null);
@@ -120,6 +124,15 @@ public class Layout extends Application
     Knopf4.setStyle( "-fx-background.color: #ff0000; ");
     } 
   }
- 
+  private void pause()
+  {
+      try
+     {
+         Thread.sleep(1000);
+        }
+      catch(Exception e)
+      {
+        }
+      }
 
 }
