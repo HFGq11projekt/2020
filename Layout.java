@@ -62,13 +62,16 @@ public class Layout extends Application
 
         if(control.checkAnswer(answers[0].id) == true)
         {
+          
             Knopf1.setStyle("-fx-background-color: #00ff00");
             
             Reset();
+            
         }
         else
         {
             Knopf1.setStyle("-fx-background-color: #ff0000");
+            Platform.exit();
         }
 
     }
@@ -77,6 +80,7 @@ public class Layout extends Application
     {
         if(control.checkAnswer(answers[1].id) == true)
         {
+           
             Knopf2.setStyle("-fx-background-color: #00ff00");
             
             Reset();
@@ -85,6 +89,7 @@ public class Layout extends Application
         else
         {
             Knopf2.setStyle("-fx-background-color: #ff0000");
+            Platform.exit();
         }  
     }
 
@@ -92,14 +97,16 @@ public class Layout extends Application
     {
         if(control.checkAnswer(answers[2].id) == true)
         {
+            
             Knopf3.setStyle("-fx-background-color: #00ff00");
             
             Reset();
-            
+           
         }
         else
         {
             Knopf3.setStyle("-fx-background-color: #ff0000");
+            Platform.exit();
         }   
     }
 
@@ -107,20 +114,24 @@ public class Layout extends Application
     {
         if(control.checkAnswer(answers[3].id) == true)
         {
+            
+           
             Knopf4.setStyle("-fx-background-color: #00ff00");
             
             Reset();
+            
             
         }
         else
         {
             Knopf4.setStyle("-fx-background-color: #ff0000");
+            Platform.exit();
         } 
     }
 
     public void Reset()
     {
-        Platform.runLater(new Thread() {
+        Platform.runLater(new Runnable() {
             public void run()
             {
                 try
@@ -145,10 +156,10 @@ public class Layout extends Application
         setAnswers();
         setImage();
         
-        Knopf1.setStyle(null);
-        Knopf2.setStyle(null);
-        Knopf3.setStyle(null);
-        Knopf4.setStyle(null);
+        Knopf1.setStyle("-fx-background-color: #ffffff");
+        Knopf2.setStyle("-fx-background-color: #ffffff");
+        Knopf3.setStyle("-fx-background-color: #ffffff");
+        Knopf4.setStyle("-fx-background-color: #ffffff");
       
     }
 }
